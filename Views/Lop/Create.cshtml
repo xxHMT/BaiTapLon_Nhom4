@@ -1,0 +1,45 @@
+@model QL_SinhVien.Models.Lop
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<hr>
+    <form asp-action="Upload" enctype="multipart/form-data">
+        <div class="row form-control">
+            <label class="col-sm-2">Nhập từ Excel:</label>
+            <input type="file" name="file" class="col-sm-4">
+            <input type="submit" value="Upload" class="btn btn-primary col-sm-1">
+        </div>
+    </form>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MaLop" class="control-label"></label>
+                <input asp-for="MaLop" class="form-control" />
+                <span asp-validation-for="MaLop" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TenLop" class="control-label"></label>
+                <input asp-for="TenLop" class="form-control" />
+                <span asp-validation-for="TenLop" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Quay Lại</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
